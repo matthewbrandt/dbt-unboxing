@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: channel-point-redeem
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - not_null
+
+  - name: channel-point-agg
+    columns:
+      - name: title
+        tests:
+          - not_null
+          - relationships:
+              to: ref('channel-point-redeem')
+              field: title
